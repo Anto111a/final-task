@@ -1,0 +1,17 @@
+version: '3'
+services:
+  final_task:
+    container_name: final_task
+    image: postgres
+    ports:
+      - ${DATABASE_PORT}:5432
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_DB}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+        # - /volumes/pgdata:/var/lib/postgresql/data
+volumes:
+  db-data:
+    driver: local
